@@ -11,3 +11,9 @@ def random_number():
     return random.randint(1, 100)
 
 print(random_number())
+
+teamMembers["Quentin", "David", "Jonah", "Yasmin"]
+
+for member in teamMembers :
+    print(member)
+
