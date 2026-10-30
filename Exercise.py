@@ -4,3 +4,10 @@ class PrintName:
         print(f"My name is {self.name}")
     
 Jonah = PrintName("Jonah")
+
+import random
+
+def random_number():
+    return random.randint(1, 100)
+
+print(random_number())
