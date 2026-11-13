@@ -135,3 +135,38 @@ top_players = update_scores(players, round_scores, 180)
 
 print(top_players)
 
+# Access Confirmation: Jonah Martin
+
+def increase_round(current_round, max_rounds):
+    """Increase current_round by 1, prints "Final Round!" before game end
+
+    Args:
+        current_round (_type_): the current round
+        max_rounds (_type_): the maximum number of rounds in a game
+
+    Returns:
+        current_round(int): current round
+    """
+    current_round += 1
+    
+    if current_round < max_rounds:
+        print(f"Round: {current_round}/{max_rounds}!")
+        
+    if current_round == max_rounds:
+        print("Final Round!")
+        
+    return current_round
+    
+def reset_round(current_round, max_rounds):
+    """Resets the round counter at then end of a game
+
+    Args:
+        current_round (int): current round 
+        max_rounds (int): maximum number of rounds
+
+    Returns:
+        current_round (int): the current round
+    """
+    current_round = 1
+    print(f"Round: {current_round}/{max_rounds}!")
+    return current_round
