@@ -101,9 +101,37 @@ def update_scores(players, round_scores, program_high_score):
 
     #Top Three players
     top_three = leaderboard[:3]
-    # Announce winners
 
-return top_three
+     print("\n--- LEADERBOARD ---")
+    for username, score in top_three:
+        print(f"{username}: {score}")
+
+    # Announce winners
+    if len(top_three) >= 1:
+        print(f"1st Place: {top_three[0][0]}")
+
+    if len(top_three) >= 2:
+        print(f"2nd Place: {top_three[1][0]}")
+
+    if len(top_three) >= 3:
+        print(f"3rd Place: {top_three[2][0]}")
+
+    return top_three
 
 #moc data
+players = {
+    "Alice": 120,
+    "Bob": 95,
+    "Charlie": 140
+}
+
+round_scores = {
+    "Alice": 20,
+    "Bob": 50,
+    "Dylan": 110
+}
+
+top_players = update_scores(players, round_scores, 180)
+
+print(top_players)
 
