@@ -49,3 +49,61 @@ def answer_matching(guesses: list[str], answer_key: list[str]) -> int:
             correct_count += 1
 
     return correct_count
+
+#update_scores - Quentin Ali
+
+def update_scores(players, round_scores, program_high_score):
+    """
+    Updates player scores after a round and determines if a new
+    program high score has been reached.
+
+    Args:
+        players (dict[str, int]):
+            Dictionary that maps usernames to their total scores.
+
+        round_scores (dict[str, int]):
+            Dictionary that maps usernames to points earned
+            during the current round.
+
+        program_high_score (int):
+            Highest score ever achieved in the program.
+
+    Returns:
+        list[tuple[str, int]]:
+            A list containing the usernames and scores of the
+            top three players, ordered from highest to lowest.
+
+    Side Effects:
+        Displays the final leaderboard.
+        Announces the first, second, and third place winners.
+        Announces a new program high score if one is reached.
+    """
+    #Update player totals
+    for player, score in round_scores.items():
+        if player in players:
+            players[player] += score
+        else:
+            players[player] = score
+
+    # Find current highest score
+    highest_score = max(players.values())
+    # Check for new program high score
+    if highest_score > program_high_score:
+        program_high_score = highest_score
+        print(f"NEW PROGRAM HIGH SCORE: {program_high_score}")
+
+    # Sort leaderboard from highest to lowest
+    leaderboard = sorted(
+        players.items(),
+        key=lambda player_data: player_data[1],
+        reverse=True
+    )
+
+    #Top Three players
+    top_three = leaderboard[:3]
+    # Announce winners
+
+return top_three
+
+#moc data
+
