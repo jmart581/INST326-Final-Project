@@ -135,7 +135,7 @@ top_players = update_scores(players, round_scores, 180)
 
 print(top_players)
 
-# Access Confirmation: Jonah Martin
+# Round Conter: Jonah Martin
 
 def increase_round(current_round, max_rounds):
     """Increase current_round by 1, prints "Final Round!" before game end
