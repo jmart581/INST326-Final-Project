@@ -49,6 +49,63 @@ def answer_matching(guesses: list[str], answer_key: list[str]) -> int:
             correct_count += 1
 
     return correct_count
+  
+
+# Access Confirmation: David Adebamowo
+
+def generate_story(story_template: str, player_words: list[str]) -> str:
+    """
+    Creates a completed story by replacing each blank
+    in a story template with a word provided by the player.
+
+    Args:
+        story_template (str): A story containing blanks
+            represented by {}.
+        player_words (list[str]): Words entered by the player
+            to fill the blanks.
+
+    Returns:
+        str: The completed story with all blanks filled.
+
+    Raises:
+        ValueError: If the number of words does not match
+            the number of blanks or if a word is empty.
+
+    Primary author: David Adebamowo
+    Technique claimed: Comprehensions
+    """
+
+    blank_count = story_template.count("{}")
+
+    if blank_count != len(player_words):
+        raise ValueError(
+            "The number of words must match the number of blanks."
+        )
+
+    cleaned_words = [word.strip() for word in player_words]
+
+    for word in cleaned_words:
+        if not word:
+            raise ValueError("Player words cannot be empty.")
+
+    completed_story = story_template
+
+    for word in cleaned_words:
+        if "{}" in completed_story:
+            completed_story = completed_story.replace("{}", word, 1)
+
+    return completed_story
+
+
+if __name__ == "__main__":
+    story = "One day, a {} went to the {} and started to {}."
+
+    words = ["dragon", "castle", "dance"]
+
+    final_story = generate_story(story, words)
+
+    print(final_story)
+
 
 #update_scores - Quentin Ali
 
