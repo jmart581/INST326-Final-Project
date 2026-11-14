@@ -227,3 +227,58 @@ def reset_round(current_round, max_rounds):
     current_round = 1
     print(f"Round: {current_round}/{max_rounds}!")
     return current_round
+
+#Access Confirmation: Ethan Miller
+
+def play_round(players, story_template, ansswer_key):
+    """
+    Runs one round of the game with each player taking a turn entering a
+    word for every blank in the story, then the words are scored against 
+    the answer key.
+
+    Args: 
+        players (dict[str, int]): Usernames mapped to their total scores.
+        story_template (str): A story that contains blanks shown by {}
+        answer_key(list[str]): Correct words for the story.
+
+    Returns:
+        dict[str, int]: Usernames mapped to the points earned this round
+
+    Side Effects: 
+        Prompts each player for a word based on the blanks. If they enter
+        without typing anything the are reprompted 
+
+    Raises:
+        ValueError: IF there are no players or the story is empty or has blanks 
+
+    """
+    if not players:
+        raise ValueError("There must be atleast one player.")
+
+    blank_count = story_template.count("{}")
+
+    if blank_count < 1:
+        raise ValueError("The story must have one blank")
+
+    round_scores = {}
+
+for players in players:
+    print(f"\n{player}, go its your turn.")
+
+    words = []
+
+    for number in range(1, blank_count + 1):
+        word = input(f"Word {number}/{blank_count}: ").strip()
+        while not word:
+            print("Input cant be empty, try again.")
+            word = input(f"Word {number}/{blank_count}: ").strip()
+        words.append(word)
+
+    round_scores[player] = answer_matching(words, answer_key)
+
+    print("\n" + generate_story(story_template, words))
+    print(f"{player} scored {round_scores[player]} this round.")
+
+return round_scores
+
+
